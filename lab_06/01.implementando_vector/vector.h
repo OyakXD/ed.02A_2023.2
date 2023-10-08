@@ -206,4 +206,45 @@ void Vector::pop_back() {
     }
 }
 
+int& Vector::front() { return m_vet[0]; }
+
+const int& Vector::front() const { return m_vet[0]; }
+
+int& Vector::back() { return m_vet[m_size - 1]; }
+
+const int& Vector::back() const { return m_vet[m_size - 1]; }
+
+void Vector::remove_all(int all) {
+    for (unsigned int i = 0; i < m_size; i++) {
+        if (m_vet[i] == all) {
+            remove_at(i);
+            i--;
+        }
+    }
+}
+
+void Vector::insert_at(int elem, unsigned int index) {
+    if (index > m_size) {
+        throw std::out_of_range("indice fora do intervalo");
+    }
+    if (m_size == m_capacity) {
+        reserve(2 * (m_capacity + 1));
+    }
+    for (unsigned int i = m_size; i > index; i--) {
+        m_vet[i] = m_vet[i - 1];
+    }
+    m_vet[index] = elem;
+    m_size++;
+}
+
+void Vector::remove_at(unsigned int index) {
+    if (index >= m_size) {
+        throw std::out_of_range("indice fora do intervalo");
+    }
+    for (unsigned int i = index; i < m_size - 1; i++) {
+        m_vet[i] = m_vet[i + 1];
+    }
+    m_size--;
+}
+
 #endif  // VECTOR_H
