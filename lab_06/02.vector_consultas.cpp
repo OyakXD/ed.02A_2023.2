@@ -4,35 +4,37 @@
 using namespace std;
 
 int main() {
-    int n;
-    cin >> n;
-    vector<int> peoples;
-    for (int i = 0; i < n; i++) {
-        int people_id;
-        cin >> people_id;
-        peoples.push_back(people_id);
+    int size_input;
+    cin >> size_input;
+    vector<string> input;
+    for (int i = 0; i < size_input; i++) {
+        string word;
+        cin >> word;
+        input.push_back(word);
     }
 
-    int m;
-    cin >> m;
-    vector<int> peoples_left;
-    for (int i = 0; i < m; i++) {
-        int peoples_id;
-        cin >> peoples_id;
-        peoples_left.push_back(peoples_id);
+    int size_query;
+    cin >> size_query;
+    vector<string> query;
+    for (int i = 0; i < size_query; i++) {
+        string word;
+        cin >> word;
+        query.push_back(word);
     }
 
-    for (int i = 0; i < n; i++) {
-        bool is_in = true;
-        for (int j = 0; j < m; j++) {
-            if (peoples[i] == peoples_left[j]) {
-                is_in = false;
-                break;
+    vector<int> result;
+    for (int i = 0; i < size_query; i++) {
+        int count = 0;
+        for (int j = 0; j < size_input; j++) {
+            if (query[i] == input[j]) {
+                count++;
             }
         }
-        if (is_in) {
-            cout << peoples[i] << " ";
-        }
+        result.push_back(count);
     }
-    cout << endl;
+
+    for (int i = 0; i < size_query - 1; i++) {
+        cout << result[i] << " ";
+    }
+    cout << result[size_query - 1] << endl;
 }
