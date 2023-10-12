@@ -3,6 +3,20 @@
 
 using namespace std;
 
+vector<int> matchingStrings(vector<string> input, vector<string> query) {
+    vector<int> result;
+    for (int i = 0; i < query.size(); i++) {
+        int count = 0;
+        for (int j = 0; j < input.size(); j++) {
+            if (query[i] == input[j]) {
+                count++;
+            }
+        }
+        result.push_back(count);
+    }
+    return result;
+}
+
 int main() {
     int size_input;
     cin >> size_input;
@@ -22,16 +36,7 @@ int main() {
         query.push_back(word);
     }
 
-    vector<int> result;
-    for (int i = 0; i < size_query; i++) {
-        int count = 0;
-        for (int j = 0; j < size_input; j++) {
-            if (query[i] == input[j]) {
-                count++;
-            }
-        }
-        result.push_back(count);
-    }
+    vector<int> result = matchingStrings(input, query);
 
     for (int i = 0; i < size_query - 1; i++) {
         cout << result[i] << " ";
