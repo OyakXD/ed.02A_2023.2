@@ -1,5 +1,5 @@
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 
 using namespace std;
 
@@ -8,16 +8,15 @@ struct Student {
     int registration;
     string discipline;
     double note;
-
 };
 
 void read_student(Student &s) {
-        getline(cin, s.name);
-        cin >> s.registration;
-        cin.ignore();
-        getline(cin, s.discipline);
-        cin >> s.note;
-        cin.ignore();
+    getline(cin, s.name);
+    cin >> s.registration;
+    cin.ignore();
+    getline(cin, s.discipline);
+    cin >> s.note;
+    cin.ignore();
 }
 
 void print_approval(Student s) {

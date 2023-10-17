@@ -1,8 +1,7 @@
 #include "Circle.h"
 
-#define _USE_MATH_DEFINES
-
 #include <cmath>
+#define _USE_MATH_DEFINES
 
 Circle::Circle() {
     m_center = Point(0, 0);

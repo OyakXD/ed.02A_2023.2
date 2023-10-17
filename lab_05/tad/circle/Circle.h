@@ -9,8 +9,7 @@ class Circle {
 
    public:
     // Construtor sem argumentos:
-    // Inicializa o circulo como centro na origem (0,0)
-    // e com raio igual a 1
+    // Inicializa o circulo como centro na origem (0,0) e com raio igual a 1
     Circle();
 
     // Construtor com dois argumentos

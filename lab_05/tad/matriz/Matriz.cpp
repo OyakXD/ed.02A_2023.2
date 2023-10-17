@@ -8,6 +8,7 @@ using namespace std;
 Matriz::Matriz(int m, int n) {
     lin = m;
     col = n;
+
     mat = new int*[m];
     for (int i = 0; i < m; i++) {
         mat[i] = new int[n];

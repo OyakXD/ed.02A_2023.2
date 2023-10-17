@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "Matriz.h"
+
 using namespace std;
 
 int main() {
@@ -12,7 +13,6 @@ int main() {
     while (true) {
         string line;
         string comando;
-
         getline(cin, line);
         stringstream ss{line};
 

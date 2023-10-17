@@ -22,7 +22,6 @@ int main() {
     for (i = 0; i < 3; i++) std::cin >> a.nota[i];
 
     // Chame a função 'calcula_media' passando o aluno 'a' por referência.
-
     calcula_media(&a);
 
     std::cout << std::fixed;

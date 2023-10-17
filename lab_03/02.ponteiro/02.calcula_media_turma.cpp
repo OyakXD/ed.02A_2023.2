@@ -17,9 +17,8 @@ void calcula_media(aluno *a) {
 }
 
 // Recebe vetor de alunos ('turma') e número de alunos ('n'), e chama a função
-// 'calcula_media' (da questão anterior) para cada aluno do vetor.
-// Ou seja, preenche o campo 'media' de cada aluno com a média das 3 notas do
-// aluno.
+// 'calcula_media' (da questão anterior) para cada aluno do vetor. Ou
+// seja,preenche o campo 'media' de cada aluno com a média das 3 notas do aluno.
 void calcula_media_turma(aluno turma[], int n) {
     for (int i = 0; i < n; i++) {
         calcula_media(&turma[i]);

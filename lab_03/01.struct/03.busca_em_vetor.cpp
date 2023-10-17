@@ -32,13 +32,11 @@ void looking_for_student(Student *stud, int n, int m) {
 int main() {
     int n;
     cin >> n;
-
     Student *stud = new Student[n];
     read_students(stud, n);
 
     int m;
     cin >> m;
-
     looking_for_student(stud, n, m);
     delete[] stud;
 }
