@@ -1,5 +1,6 @@
 #ifndef STACK_H
 #define STACK_H
+#include <initializer_list>
 
 /***********************************************************
  * @brief Classe que implementa um Node da fila
@@ -28,7 +29,10 @@ class Stack {
    public:
     Stack() = default;
 
-    void push(const Type &val) {}
+    void push(const Type &val) {
+        m_top = new Node<type>(val, m_top);
+        m_size++;
+    }
 };
 
 #endif
