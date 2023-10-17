@@ -13,6 +13,7 @@ int main() {
     while (true) {
         string line;
         string comando;
+
         getline(cin, line);
         stringstream ss{line};
 
