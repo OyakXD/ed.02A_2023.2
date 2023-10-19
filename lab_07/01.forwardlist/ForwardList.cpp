@@ -91,6 +91,9 @@ void ForwardList::push_back(const int &val) {
 }
 
 void ForwardList::pop_front() {
+    if (m_size == 0) {
+        return;
+    }
     Node *aux = m_head->next;
     m_head->next = aux->next;
     delete aux;
@@ -98,6 +101,9 @@ void ForwardList::pop_front() {
 }
 
 void ForwardList::pop_back() {
+    if (m_size == 0) {
+        return;
+    }
     Node *aux = m_head;
     while (aux->next->next != nullptr) {
         aux = aux->next;
