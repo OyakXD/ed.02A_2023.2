@@ -1,60 +1,109 @@
 #ifndef BINARY_TREE_H
 #define BINARY_TREE_H
 #include <iostream>
-
 #include "Node.h"
+
 template <typename Type>
 class BinaryTree {
-   private:
-    Node<Type> *m_root;  // Ponteiro para a raiz da árvore
+private:
+    Node<Type>* m_root {}; // ponteiro para a raiz
 
-   public:
+public:
     // Construtor vazio
-    BinaryTree() { m_root = nullptr; }
+    BinaryTree() = default;
 
-    // Contrutor que cria uma árvore a partir de outras duas
-    BinaryTree(const Type &val, BinaryTree<Type> &t1, BinaryTree<Type> &t2) {
-        m_root = new Node<Type>(val, t1.m_root, t2.m_root);
-    }
-
-    void preOrder() { 
-        preOrder(m_root); 
-    }
-    void postOrder() { 
-        postOrder(m_root); 
-    }
-    void inOrder() { 
-        inOrder(m_root); 
+    // Construtor que cria uma arvore a
+    // partir de outras duas
+    BinaryTree(const Type& val, 
+               BinaryTree<Type>& tleft, 
+               BinaryTree<Type>& tright) 
+    {
+        m_root = new Node<Type>(val,tleft.m_root,tright.m_root);
+        tleft.m_root = tright.m_root = nullptr;
     }
 
-   private:
-    // Função recursiva que percorre a árvore em pré-ordem
-    void preOrder(Node<Type> *node) {
-        if (node == nullptr) {
-            return;
+    // Funcao que retorna true se e somente se 
+    // a arvore estiver vazia
+    bool empty() const {
+        return m_root == nullptr;
+    }
+
+    // Funcao publica que imprime as chaves em 
+    // pre-ordem
+    void preOrder() const {
+        preOrder(m_root);
+    }
+    // pos-ordem
+    void postOrder() const {
+        postOrder(m_root);
+    }
+    // ordem simetrica
+    void inOrder() const {
+        inOrder(m_root);
+    }
+    
+    // Funcao publica que retorna se um certo valor
+    // esta na arvore
+    bool contains(const Type& val) const {
+        contains(m_root, val);
+    }
+
+
+
+private:
+    // funcao recursiva que percorre a arvore
+    // em pre-ordem
+    void preOrder(Node<Type>* node) const {
+        if(node != nullptr) {
+            std::cout << node->data << " ";
+            preOrder(node->left);
+            preOrder(node->right);
         }
-        std::cout << node->m_data << " ";
-        preOrder(node->m_left);
-        preOrder(node->m_right);
+    }
+    // funcao recursiva que percorre a arvore
+    // em pos-ordem
+    void postOrder(Node<Type>* node) const {
+        if(node != nullptr) {
+            postOrder(node->left);
+            postOrder(node->right);
+            std::cout << node->data << " ";
+        }
+    }
+    // funcao recursiva que percorre a arvore
+    // em ordem simetrica
+    void inOrder(Node<Type>* node) const {
+        if(node != nullptr) {
+            inOrder(node->left);
+            std::cout << node->data << " ";
+            inOrder(node->right);
+        }
     }
 
-    void postOrder(Node<Type> *node) {
-        if (node == nullptr) {
-            return;
-        }
-        postOrder(node->m_left);
-        postOrder(node->m_right);
-        std::cout << node->m_data << " ";
+    // Funcao recursiva que recebe a raiz de uma
+    // arvore e um certo valor val e retorna true
+    // se e somente se a arvore contem val
+    // como uma de suas chaves
+    bool contains(Node<Type> *node, const Type& val) const {
+        if(node == nullptr) 
+            return false;
+        return (node->data == val) ||
+               contains(node->left, val) ||
+               contains(node->right, val);
     }
 
-    void inOrder(Node<Type> *node) {
-        if (node == nullptr) {
-            return;
+    // Funcao recursiva que recebe
+    // a raiz de uma arvore e 
+    // deleta todos os seus nos
+    // Retorna a arvore vazia
+    Node<Type>* clear(Node<Type> *node) {
+        if(node == nullptr) { // caso base
+            return nullptr;
         }
-        inOrder(node->m_left);
-        std::cout << node->m_data << " ";
-        inOrder(node->m_right);
+        else{ // caso geral
+            // terminar
+        }
     }
+
 };
 
-#endif
+#endif //BINARY_TREE_H
