@@ -13,6 +13,11 @@ void print(string* mat, int nl) {
 
 // Faz a queimada.
 void fire(int nl, int nc, string* mat, int l, int c) {
+    // Se a posição inicial for '.', retorna.
+    if (mat[l][c] == '.') {
+        return;
+    }
+
     // Cria a pilha e empilha a posição inicial.
     stack<int> stack;
     stack.push(l * nc + c);
@@ -26,12 +31,6 @@ void fire(int nl, int nc, string* mat, int l, int c) {
         // Calcula a linha e a coluna da posição atual.
         int current_l = top / nc;
         int current_c = top % nc;
-
-        // Se a posição atual for '.' ou 'o', pula para a próxima iteração.
-        if (mat[current_l][current_c] == '.' ||
-            mat[current_l][current_c] == 'o') {
-            continue;
-        }
 
         // Marca a posição atual como queimada.
         mat[current_l][current_c] = 'o';
