@@ -106,7 +106,7 @@ int Tree::height() {
 int Tree::_height(Node *node) {
     if (node == nullptr) {
         return -1;
-    }
+    } 
 
     int left = _height(node->left);
     int right = _height(node->right);
