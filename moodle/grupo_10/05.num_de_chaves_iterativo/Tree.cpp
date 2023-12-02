@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include <stack>
 #include <string>
 #include "Tree.h"
 
@@ -71,29 +72,29 @@ int Tree::size() {
 }
 
 int Tree::_size_iterativo(Node *node) {
-    int size = 0;
-    Node *current = node;
+    if (node == nullptr)
+        return 0;
 
-    while(current != nullptr) {
-        if(current->left == nullptr) {
-            size++;
-            current = current->right;
-        } else {
-            Node *predecessor = current->left;
-            while(predecessor->right != nullptr && predecessor->right != current)
-                predecessor = predecessor->right;
-            if(predecessor->right == nullptr) {
-                predecessor->right = current;
-                current = current->left;
-            } else {
-                predecessor->right = nullptr;
-                size++;
-                current = current->right;
-            }
+    int size = 0; // Inicia o tamanho como 0
+    std::stack<Node*> pilha;
+    pilha.push(node);
+
+    while (!pilha.empty()) {
+        Node* current = pilha.top();
+        pilha.pop();
+        size++;
+
+        // Se houver um nó à direita, adiciona à pilha
+        if (current->right != nullptr) {
+            pilha.push(current->right);
+        }
+
+        // Se houver um nó à esquerda, adiciona à pilha
+        if (current->left != nullptr) {
+            pilha.push(current->left);
         }
     }
+
     return size;
+    
 }
-
-
-
