@@ -6,4 +6,4 @@ Trabalho da cadeira Estrutura de Dados, do curso de Ciência da Computação da 
 O trabalho consiste em criar um sistema chamado NeoLook que tem como objetivo simular um sistema executando uma série de processos de acordo com a política de escalonamento FCFS ou SJF.
 
 ## Link do Repositório
-https://github.com/auanK/NeoLook
+[github.com/auanK/NeoLook](https://github.com/auanK/NeoLook)
